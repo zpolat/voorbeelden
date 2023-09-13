@@ -1,0 +1,47 @@
+install nodejs
+install vscode
+install git
+npm init
+npm install cypress --save-dev
+npm install typescript --save-dev
+npx tsc --init
+npx cypress open
+npm i @badeball/cypress-cucumber-preprocessor
+npm i @bahmutov/cypress-esbuild-preprocessor
+https://github.com/badeball/cypress-cucumber-preprocessor/blob/master/examples/esbuild-ts/cypress.config.ts
+https://github.com/badeball/cypress-cucumber-preprocessor/blob/master/examples/esbuild-ts/tsconfig.json
+cucumber plugin wildcat fork install
+settings.json:
+{
+    "cucumber.features": [
+      "cypress/e2e/*.feature"
+    ],
+    "cucumber.glue": [
+        "cypress/support/step_definitions/*.ts",
+      ]
+  }
+touch .cypress-cucumber-preprocessorrc.json
+inhoud:
+{
+    "stepDefinitions": [
+      "cypress/support/step_definitions/*.ts"
+    ]
+  }
+  
+in package json voor cucumber report:
+{
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "formatter": "cucumber-json-formatter"
+    },
+    "html": {
+      "enabled": true,
+      "output": "cypress/bla.html"
+    }
+},
+
+
+Download cucumber-json-formatter(optioneel?)
+Kopieer cucumber-report.json na het runnen van een test naar cypress/cucumber-json
+node report.js (is t evinden op de github pagina)
