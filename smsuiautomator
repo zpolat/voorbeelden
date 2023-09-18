@@ -1,0 +1,16 @@
+@Test
+public void sendSmsMessage() throws RemoteException, InterruptedException, UiObjectNotFoundException, IOException {
+    mDevice.pressHome();
+
+    // Start de SMS-app met een vooraf ingevuld nummer en bericht
+    mDevice.executeShellCommand("am start -a android.intent.action.SENDTO -d sms:123 --es sms_body \"Hallo, dit is een testbericht\"");
+
+    // Wacht een paar seconden om de app de tijd te geven om te openen
+    Thread.sleep(5000);
+
+    // Vind de verzendknop en klik erop om het bericht te verzenden
+    mDevice.findObject(new UiSelector().resourceId("com.android.messaging:id/send_message_button_icon")).click();
+
+    // Wacht even om te zorgen dat het bericht wordt verzonden
+    Thread.sleep(5000);
+}
