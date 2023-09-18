@@ -1,0 +1,7 @@
+    mDevice.pressHome();
+
+    // Start de webbrowser en bezoek een website
+    mDevice.executeShellCommand("am start -a android.intent.action.VIEW -d https://www.example.com");
+
+    // Wacht een paar seconden om de browser de tijd te geven om te openen en de website te laden
+    Thread.sleep(5000);
