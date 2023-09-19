@@ -1,0 +1,5 @@
+// Zoek naar een tekst die uniek is voor de webpagina
+UiObject webpageText = mDevice.findObject(new UiSelector().text("Example Domain"));
+
+    // Controleer of de tekst aanwezig is op de webpagina
+    assertTrue("Webpage did not load correctly", webpageText.exists());
