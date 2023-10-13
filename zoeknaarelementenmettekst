@@ -1,0 +1,64 @@
+describe("Test data-id waarden", () => {
+  it("haalt de waarde van het eerste data-id element op en zoekt naar andere elementen met die waarde", () => {
+    cy.visit("jouw_url_hier");
+
+    cy.get("[data-id]")
+      .first()
+      .invoke("attr", "data-id")
+      .then((value) => {
+        const dataIdValue = value;
+
+        // Zoek naar alle ANDERE elementen met die data-id waarde (behalve de eerste) en controleer de tekst
+        cy.get(`[data-id="${dataIdValue}"]:not(:first)`).should(
+          "contain",
+          "jouw tekst hier"
+        );
+      });
+  });
+});
+
+describe("Test data-id waarden", () => {
+  it("haalt de waarde van het eerste data-id element op en zoekt naar andere elementen met die waarde", () => {
+    cy.visit("jouw_url_hier");
+
+    cy.get("[data-id]")
+      .first()
+      .invoke("attr", "data-id")
+      .then((value: string) => {
+        const dataIdValue = value;
+
+        // Zorg ervoor dat dataIdValue een string is voordat je het in de selector gebruikt
+        if (typeof dataIdValue === "string") {
+          // Zoek naar alle ANDERE elementen met die data-id waarde (behalve de eerste) en controleer de tekst
+          cy.get(`[data-id="${dataIdValue}"]:not(:first)`).should(
+            "contain",
+            "jouw tekst hier"
+          );
+        }
+      });
+  });
+});
+
+describe("Test data-id waarden", () => {
+  it("haalt de waarde van het eerste data-id element op en zoekt naar andere elementen met die waarde", () => {
+    cy.visit("jouw_url_hier");
+
+    let dataIdValue: string | undefined;
+
+    // Haal de waarde van het eerste data-id element op
+    cy.get("[data-id]")
+      .first()
+      .invoke("attr", "data-id")
+      .then((value: string) => {
+        dataIdValue = value;
+
+        // Controleer elk element met dezelfde data-id waarde
+        cy.get(`[data-id="${dataIdValue}"]`).each(($el, index) => {
+          // Overslaan van het eerste element
+          if (index !== 0) {
+            cy.wrap($el).should("contain", "jouw tekst hier");
+          }
+        });
+      });
+  });
+});
